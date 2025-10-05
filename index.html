@@ -88,18 +88,42 @@
 
     .audio-controls {
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 250px;
+    }
+
+    .audio-buttons {
+      display: flex;
       gap: 15px;
     }
 
-    .audio-controls i {
+    .audio-buttons i {
       font-size: 1.5rem;
       cursor: pointer;
       transition: 0.2s;
     }
 
-    .audio-controls i:hover {
+    .audio-buttons i:hover {
       transform: scale(1.2);
       color: #ccc;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress {
+      height: 100%;
+      background: white;
+      width: 0%;
+      transition: width 0.1s linear;
     }
   </style>
 </head>
@@ -121,8 +145,13 @@ If you want to talk to me, join my discord! I'd love to chat!
     </div>
 
     <div class="audio-controls">
-      <i class="fas fa-play" id="play"></i>
-      <i class="fas fa-pause" id="pause"></i>
+      <div class="audio-buttons">
+        <i class="fas fa-play" id="play"></i>
+        <i class="fas fa-pause" id="pause"></i>
+      </div>
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
     </div>
 
     <audio id="bgmusic" src="/song.mp3" loop></audio>
@@ -134,6 +163,7 @@ If you want to talk to me, join my discord! I'd love to chat!
     const audio = document.getElementById('bgmusic');
     const playBtn = document.getElementById('play');
     const pauseBtn = document.getElementById('pause');
+    const progress = document.getElementById('progress');
 
     enter.addEventListener('click', () => {
       enter.style.display = 'none';
@@ -143,6 +173,18 @@ If you want to talk to me, join my discord! I'd love to chat!
 
     playBtn.addEventListener('click', () => audio.play());
     pauseBtn.addEventListener('click', () => audio.pause());
+
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progress.style.width = percent + '%';
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      audio.currentTime = 0;
+      audio.play();
+    });
   </script>
 </body>
 </html>
