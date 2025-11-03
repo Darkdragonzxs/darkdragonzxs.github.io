@@ -8,10 +8,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <style>
 :root {
-  --glow-color: #ff003c;
-  --glow-amount: 10px;
-  --highlight: #ff003c;
-  --bg-alt: #000000;
+  --glow-color: #ff002b;
+  --highlight: #ff002b;
+  --bg-alt: #000;
 }
 
 body {
@@ -24,26 +23,26 @@ body {
   flex-direction: column;
   font-family: 'Parkinsans';
   background: #000;
-  color: #ffffff;
+  color: #fff;
   overflow: hidden;
   position: relative;
-  scrollbar-width: thin;
-  scrollbar-color: var(--highlight) var(--bg-alt);
 }
 
 body::before {
-  content: '';
+  content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-    linear-gradient(rgb(255 0 60 / 7%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(255 0 60 / 7%) 1px, transparent 1px);
-  background-size: 21px 21px;
-  z-index: -999;
-  pointer-events: none;
+  inset: 0;
+  background: url("https://miro.medium.com/v2/1*vBi4Ycgdn5t3lu2SvQXuog.gif") center/cover no-repeat;
+  filter: blur(6px) brightness(0.6); /* less blur */
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0.5));
+  z-index: -1;
 }
 
 .overlay {
@@ -52,10 +51,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image:
-    linear-gradient(rgb(255 0 60 / 8%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(255 255 255 / 5%) 1px, transparent 1px);
-  background-size: 21px 21px;
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,8 +65,7 @@ body::before {
   font-size: 50px;
   margin-top: 1rem;
   opacity: 0.9;
-  color: var(--highlight);
-  text-shadow: 0 0 20px var(--highlight);
+  color: #fff;
 }
 
 .click-text {
@@ -83,7 +78,6 @@ body::before {
 
 .click-text:hover {
   color: var(--highlight);
-  text-shadow: 0 0 20px var(--highlight);
 }
 
 #main-content {
@@ -95,24 +89,16 @@ body::before {
 .card {
   position: relative;
   border-radius: 20px;
-  border: 1px solid rgba(255, 0, 60, 0.4);
+  border: 1px solid rgba(255, 0, 43, 0.4);
   padding: 2rem 3rem;
   text-align: center;
   color: #fff;
-  box-shadow: 0 4px 30px rgba(255, 0, 60, 0.15);
+  box-shadow: 0 4px 30px rgba(255, 0, 43, 0.15);
   width: 300px;
   max-width: 90%;
   overflow: hidden;
-  background: rgba(30, 0, 0, 0.2);
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('bg.gif') center center / cover no-repeat;
-  filter: blur(20px) brightness(0.6);
-  z-index: -1;
+  background: rgba(10, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
 }
 
 .card img {
@@ -122,21 +108,21 @@ body::before {
   object-fit: cover;
   margin-bottom: 1rem;
   border: 2px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 10px rgba(255, 0, 60, 0.4);
+  box-shadow: 0 0 10px rgba(255, 0, 43, 0.4);
   transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
 }
 
 .card img:hover {
   transform: scale(1.1);
-  border: 2px solid rgba(255, 0, 60, 0.9);
-  box-shadow: 0 0 25px rgba(255, 0, 60, 0.6);
+  border: 2px solid rgba(255, 0, 43, 0.9);
+  box-shadow: 0 0 25px rgba(255, 0, 43, 0.6);
 }
 
 .card h1 {
   margin-bottom: 0.5rem;
   font-size: 2rem;
   color: var(--highlight);
-  text-shadow: 0 0 15px rgba(255, 0, 60, 0.7);
+  text-shadow: 0 0 10px rgba(255, 0, 43, 0.6);
 }
 
 .card p {
@@ -164,7 +150,6 @@ body::before {
 .icon-link:hover {
   color: var(--highlight);
   transform: scale(1.15);
-  text-shadow: 0 0 10px var(--highlight);
 }
   </style>
 </head>
@@ -176,21 +161,24 @@ body::before {
 
   <div id="main-content">
     <div class="card">
-      <img src="pfp.png" alt="pfp">
+      <img src="gay.png" alt="pfp">
       <h1>zxs</h1>
-      <p>13 | coding + music + glowcore</p>
+      <p>fullstack dev i think</p>
       <div class="icon-row">
-        <a class="icon-link" href="https://github.com/zxsofficial" target="_blank" title="GitHub">
+        <a class="icon-link" href="https://github.com/darkdragonzxs" target="_blank" title="GitHub">
           <i class="fab fa-github"></i>
         </a>
-        <a class="icon-link" href="https://discord.com/users/123456789012345678" target="_blank" title="Discord">
+        <a class="icon-link" href="https://discord.gg/zxs" target="_blank" title="Discord">
           <i class="fab fa-discord"></i>
         </a>
-        <a class="icon-link" href="mailto:zxs@vx.zone" title="Email">
+        <a class="icon-link" href="mailto:zxsofficia@gmail.com" title="Email">
           <i class="fa-solid fa-envelope"></i>
         </a>
-        <a class="icon-link" href="https://vx.zone" target="_blank" title="vx.zone">
+        <a class="icon-link" href="https://zxs.one" target="_blank" title="zxs">
           <i class="fa-solid fa-globe"></i>
+        </a>
+        <a class="icon-link" href="https://luna.loan" target="_blank" title="Luna">
+          <i class="fa-solid fa-moon"></i>
         </a>
       </div>
     </div>
@@ -200,7 +188,7 @@ body::before {
 
   <script>
     const phrases = ["...", "Gold teeth", "sitting on", "the dash", "she a rockstar"];
-    const delays = [3.1, 0.6, 0.6, 0.6, 1.0];
+    const delays = [3.1, 1, 0.6, 0.6, 1.0];
 
     function startSequence() {
       const overlay = document.getElementById("overlay");
