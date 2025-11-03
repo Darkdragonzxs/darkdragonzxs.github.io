@@ -1,12 +1,13 @@
+<!-- new profile is tuff :mending-heart: -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>zxs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-  <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title></title>
+<link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+<style>
 :root {
   --glow-color: #ff002b;
   --highlight: #ff002b;
@@ -151,75 +152,99 @@ body::after {
   color: var(--highlight);
   transform: scale(1.15);
 }
-  </style>
+</style>
 </head>
 <body>
-  <div class="overlay" id="overlay">
-    <div id="text"></div>
-    <div class="click-text" onclick="startSequence()">enter</div>
-  </div>
+<div class="overlay" id="overlay">
+  <div id="text"></div>
+  <div class="click-text" onclick="startSequence()">enter</div>
+</div>
 
-  <div id="main-content">
-    <div class="card">
-      <img src="gay.png" alt="pfp">
-      <h1>zxs</h1>
-      <p>fullstack dev i think</p>
-      <div class="icon-row">
-        <a class="icon-link" href="https://github.com/darkdragonzxs" target="_blank" title="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a class="icon-link" href="https://discord.gg/zxs" target="_blank" title="Discord">
-          <i class="fab fa-discord"></i>
-        </a>
-        <a class="icon-link" href="mailto:zxsofficia@gmail.com" title="Email">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
-        <a class="icon-link" href="https://zxs.one" target="_blank" title="zxs">
-          <i class="fa-solid fa-globe"></i>
-        </a>
-        <a class="icon-link" href="https://luna.loan" target="_blank" title="Luna">
-          <i class="fa-solid fa-moon"></i>
-        </a>
-      </div>
+<div id="main-content">
+  <div class="card">
+    <img src="gay.png" alt="pfp">
+    <h1>zxs</h1>
+    <p>fullstack dev i think</p>
+    <div class="icon-row">
+      <a class="icon-link" href="https://github.com/darkdragonzxs" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a class="icon-link" href="https://discord.gg/zxs" target="_blank" title="Discord">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a class="icon-link" href="mailto:zxsofficia@gmail.com" title="Email">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a class="icon-link" href="https://zxs.one" target="_blank" title="zxs">
+        <i class="fa-solid fa-globe"></i>
+      </a>
+      <a class="icon-link" href="https://luna.loan" target="_blank" title="Luna">
+        <i class="fa-solid fa-moon"></i>
+      </a>
     </div>
   </div>
+</div>
 
-  <audio id="bg-music" src="bg.mp3" preload="auto"></audio>
+<audio id="bg-music" src="bg.mp3" preload="auto"></audio>
 
-  <script>
-    const phrases = ["...", "Gold teeth", "sitting on", "the dash", "she a rockstar"];
-    const delays = [3.1, 1, 0.6, 0.6, 1.0];
+<script>
+  const phrases = ["...", "Gold teeth", "sitting on", "the dash", "she a rockstar"];
+  const delays = [3.1, 1, 0.6, 0.6, 1.0];
 
-    function startSequence() {
-      const overlay = document.getElementById("overlay");
-      const textEl = document.getElementById("text");
-      const clickText = document.querySelector(".click-text");
-      const audio = document.getElementById("bg-music");
+  const titleText = "@.dzxs";
+  let titleIndex = 0;
+  let deleting = false;
 
-      clickText.style.display = "none";
-      overlay.style.opacity = "1";
-
-      audio.volume = 0.6;
-      audio.play().catch(err => console.log("Autoplay blocked:", err));
-
-      let i = 0;
-      (function updateText() {
-        if (i < phrases.length) {
-          textEl.textContent = phrases[i];
-          setTimeout(updateText, delays[i] * 1000);
-          i++;
-        } else {
-          setTimeout(() => {
-            overlay.style.opacity = "0";
-            setTimeout(() => {
-              overlay.style.display = "none";
-              document.getElementById("main-content").style.display = "flex";
-              document.body.style.overflow = "auto";
-            }, 800);
-          }, 500);
-        }
-      })();
+  function animateTitle() {
+    if (!deleting && titleIndex < titleText.length) {
+      document.title = titleText.substring(0, titleIndex + 1);
+      titleIndex++;
+      setTimeout(animateTitle, 200);
+    } else if (!deleting && titleIndex === titleText.length) {
+      deleting = true;
+      setTimeout(animateTitle, 1000);
+    } else if (deleting && titleIndex > 0) {
+      document.title = titleText.substring(0, titleIndex - 1);
+      titleIndex--;
+      setTimeout(animateTitle, 120);
+    } else {
+      deleting = false;
+      setTimeout(animateTitle, 800);
     }
-  </script>
+  }
+  animateTitle();
+
+  function startSequence() {
+    const overlay = document.getElementById("overlay");
+    const textEl = document.getElementById("text");
+    const clickText = document.querySelector(".click-text");
+    const audio = document.getElementById("bg-music");
+
+    clickText.style.display = "none";
+    overlay.style.opacity = "1";
+
+    audio.volume = 0.6;
+    audio.loop = true;
+    audio.play().catch(err => console.log("Autoplay blocked:", err));
+
+    let i = 0;
+    (function updateText() {
+      if (i < phrases.length) {
+        textEl.textContent = phrases[i];
+        setTimeout(updateText, delays[i] * 1000);
+        i++;
+      } else {
+        setTimeout(() => {
+          overlay.style.opacity = "0";
+          setTimeout(() => {
+            overlay.style.display = "none";
+            document.getElementById("main-content").style.display = "flex";
+            document.body.style.overflow = "auto";
+          }, 800);
+        }, 500);
+      }
+    })();
+  }
+</script>
 </body>
 </html>
