@@ -9,22 +9,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 <style>
 :root {
-  --glow-color: #ff002b;
   --highlight: #ff002b;
-  --bg-alt: #000;
 }
 
 body {
   margin: 0;
-  padding: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  font-family: 'Parkinsans';
   background: #000;
   color: #fff;
+  font-family: 'Parkinsans';
   overflow: hidden;
   position: relative;
 }
@@ -37,7 +33,6 @@ body::before {
   filter: blur(6px) brightness(0.6);
   z-index: -2;
 }
-
 body::after {
   content: "";
   position: fixed;
@@ -48,109 +43,106 @@ body::after {
 
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   z-index: 10;
-  opacity: 1;
   transition: opacity 0.8s ease;
 }
-
-#text {
-  font-size: 50px;
-  margin-top: 1rem;
-  opacity: 0.9;
-  color: #fff;
-}
-
+#text { font-size: 50px; opacity: 0.9; }
 .click-text {
   font-size: 50px;
   color: #ccc;
   margin-top: 2rem;
   cursor: pointer;
-  transition: color 0.7s ease;
+  transition: color 0.5s ease;
 }
-
-.click-text:hover {
-  color: var(--highlight);
-}
+.click-text:hover { color: var(--highlight); }
 
 #main-content {
   display: none;
-  position: relative;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
 }
 
 .card {
-  position: relative;
   border-radius: 20px;
-  border: 1px solid rgba(255, 0, 43, 0.4);
-  padding: 2rem 3rem;
-  text-align: center;
-  color: #fff;
-  box-shadow: 0 4px 30px rgba(255, 0, 43, 0.15);
-  width: 300px;
-  max-width: 90%;
-  overflow: hidden;
+  border: 2px solid var(--highlight);
   background: rgba(10, 0, 0, 0.45);
   backdrop-filter: blur(10px);
+  width: 380px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-
 .card img {
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 1rem;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 10px rgba(255, 0, 43, 0.4);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 0 10px rgba(255,0,43,0.4);
+  transition: transform 0.15s ease-out;
 }
-
-.card img:hover {
-  transform: scale(1.1);
-  border: 2px solid rgba(255, 0, 43, 0.9);
-  box-shadow: 0 0 25px rgba(255, 0, 43, 0.6);
-}
-
 .card h1 {
-  margin-bottom: 0.5rem;
-  font-size: 2rem;
+  margin: 1rem 0 0.5rem;
+  font-size: 1.8rem;
   color: var(--highlight);
-  text-shadow: 0 0 10px rgba(255, 0, 43, 0.6);
 }
+.card p { opacity: 0.9; font-size: 1rem; }
 
-.card p {
-  font-size: 1rem;
-  line-height: 1.4;
-  opacity: 0.9;
-  margin-bottom: 1.5rem;
+.projects {
+  border-radius: 20px;
+  border: 2px solid var(--highlight);
+  background: rgba(10, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+  width: 380px;
+  height: 380px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 10px;
+  padding: 14px;
+  box-sizing: border-box;
 }
-
-.icon-row {
+.project {
+  border: 1px solid rgba(255,0,43,0.5);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.5);
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  align-items: flex-start;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
-
-.icon-link {
-  color: #fff;
-  font-size: 2rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  padding: 0.6rem;
-  border-radius: 50%;
+.project:hover {
+  background: rgba(255,0,43,0.1);
+  transform: scale(1.03);
 }
-
-.icon-link:hover {
+.project i {
   color: var(--highlight);
-  transform: scale(1.15);
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+.project-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+.project-desc {
+  font-size: 0.85rem;
+  opacity: 0.8;
 }
 </style>
 </head>
@@ -161,90 +153,104 @@ body::after {
 </div>
 
 <div id="main-content">
-  <div class="card">
-    <img src="gay.png" alt="pfp">
+  <div class="card" id="profile">
+    <img src="gay.png" alt="pfp" id="pfp">
     <h1>zxs</h1>
     <p>fullstack dev i think</p>
-    <div class="icon-row">
-      <a class="icon-link" href="https://github.com/darkdragonzxs" target="_blank" title="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a class="icon-link" href="https://discord.gg/zxs" target="_blank" title="Discord">
-        <i class="fab fa-discord"></i>
-      </a>
-      <a class="icon-link" href="mailto:zxsofficia@gmail.com" title="Email">
-        <i class="fa-solid fa-envelope"></i>
-      </a>
-      <a class="icon-link" href="https://zxs.one" target="_blank" title="zxs">
-        <i class="fa-solid fa-globe"></i>
-      </a>
-      <a class="icon-link" href="https://luna.loan" target="_blank" title="Luna">
-        <i class="fa-solid fa-moon"></i>
-      </a>
-    </div>
+  </div>
+
+<div class="projects">
+  <div class="project" data-link="https://zxs.one">
+    <i class="fa-solid fa-gamepad"></i>
+    <div class="project-title">ZXS</div>
+    <div class="project-desc">Better UBG site</div>
+  </div>
+
+  <div class="project" data-link="https://luna.loan">
+    <i class="fa-solid fa-moon"></i>
+    <div class="project-title">Luna</div>
+    <div class="project-desc">Cloudmoon Bypass</div>
+  </div>
+
+  <div class="project" data-link="https://github.com/darkdragonzxs">
+    <i class="fa-brands fa-github"></i>
+    <div class="project-title">Github</div>
+    <div class="project-desc">gh profile</div>
+  </div>
+
+  <div class="project" data-link="https://discord.gg/zxs">
+    <i class="fa-brands fa-discord"></i>
+    <div class="project-title">Discord</div>
+    <div class="project-desc">my discord</div>
   </div>
 </div>
+
 
 <audio id="bg-music" src="bg.mp3" preload="auto"></audio>
 
 <script>
-  const phrases = ["...", "Gold teeth", "sitting on", "the dash", "she a rockstar"];
-  const delays = [3.1, 1, 0.6, 0.6, 1.0];
+const phrases = ["...", "Gold teeth", "sitting on", "the dash", "she a rockstar"];
+const delays = [3.1, 1, 0.6, 0.6, 1.0];
+const titleText = "@.dzxs";
+let t = 0, del = false;
 
-  const titleText = "@.dzxs";
-  let titleIndex = 0;
-  let deleting = false;
+function animateTitle() {
+  if (!del && t < titleText.length) {
+    document.title = titleText.substring(0, t + 1);
+    t++;
+    setTimeout(animateTitle, 200);
+  } else if (!del && t === titleText.length) {
+    del = true; setTimeout(animateTitle, 1000);
+  } else if (del && t > 0) {
+    document.title = titleText.substring(0, t - 1);
+    t--;
+    setTimeout(animateTitle, 120);
+  } else {
+    del = false; setTimeout(animateTitle, 800);
+  }
+}
+animateTitle();
 
-  function animateTitle() {
-    if (!deleting && titleIndex < titleText.length) {
-      document.title = titleText.substring(0, titleIndex + 1);
-      titleIndex++;
-      setTimeout(animateTitle, 200);
-    } else if (!deleting && titleIndex === titleText.length) {
-      deleting = true;
-      setTimeout(animateTitle, 1000);
-    } else if (deleting && titleIndex > 0) {
-      document.title = titleText.substring(0, titleIndex - 1);
-      titleIndex--;
-      setTimeout(animateTitle, 120);
+function startSequence() {
+  const overlay = document.getElementById("overlay");
+  const textEl = document.getElementById("text");
+  const clickText = document.querySelector(".click-text");
+  const audio = document.getElementById("bg-music");
+
+  clickText.style.display = "none";
+  audio.volume = 0.6;
+  audio.loop = true;
+  audio.play().catch(()=>{});
+
+  let i = 0;
+  (function next() {
+    if (i < phrases.length) {
+      textEl.textContent = phrases[i];
+      setTimeout(next, delays[i]*1000);
+      i++;
     } else {
-      deleting = false;
-      setTimeout(animateTitle, 800);
+      overlay.style.opacity = "0";
+      setTimeout(()=>{
+        overlay.style.display = "none";
+        document.getElementById("main-content").style.display = "flex";
+      },800);
     }
-  }
-  animateTitle();
+  })();
+}
 
-  function startSequence() {
-    const overlay = document.getElementById("overlay");
-    const textEl = document.getElementById("text");
-    const clickText = document.querySelector(".click-text");
-    const audio = document.getElementById("bg-music");
+const pfp = document.getElementById("pfp");
+document.addEventListener("mousemove", e=>{
+  const x = (e.clientX - window.innerWidth/2)/40;
+  const y = (e.clientY - window.innerHeight/2)/40;
+  pfp.style.transform = `translate(${x}px,${y}px)`;
+});
 
-    clickText.style.display = "none";
-    overlay.style.opacity = "1";
-
-    audio.volume = 0.6;
-    audio.loop = true;
-    audio.play().catch(err => console.log("Autoplay blocked:", err));
-
-    let i = 0;
-    (function updateText() {
-      if (i < phrases.length) {
-        textEl.textContent = phrases[i];
-        setTimeout(updateText, delays[i] * 1000);
-        i++;
-      } else {
-        setTimeout(() => {
-          overlay.style.opacity = "0";
-          setTimeout(() => {
-            overlay.style.display = "none";
-            document.getElementById("main-content").style.display = "flex";
-            document.body.style.overflow = "auto";
-          }, 800);
-        }, 500);
-      }
-    })();
-  }
+document.querySelectorAll(".project").forEach(p=>{
+  p.addEventListener("click",()=>{
+    const link = p.getAttribute("data-link");
+    if(link) window.open(link,"_blank");
+  });
+});
 </script>
 </body>
 </html>
