@@ -18,7 +18,7 @@
     :root {
       --bg: #000;
       --fg: #fff;
-      --muted: rgba(255,255,255,0.6);
+      --muted: rgba(255,255,255,0.65);
       --border: rgba(255,255,255,0.15);
       --card-bg: rgba(0,0,0,0.6);
       --accent: #8b5cf6;
@@ -102,7 +102,7 @@
       z-index: 1;
       padding: 16px;
       width: 100%;
-      max-width: 420px;
+      max-width: 480px;
     }
 
     .card {
@@ -139,29 +139,92 @@
       color: var(--muted);
     }
 
+    .bio {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .links-wrapper {
+      margin-top: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
     .links {
-      margin-top: 24px;
       display: flex;
       justify-content: center;
       gap: 24px;
     }
 
-    .links a {
+    .link-item {
+      position: relative;
+    }
+
+    .link-item a {
       color: var(--fg);
       font-size: 22px;
       opacity: 0.7;
       transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
     }
 
-    .links a:hover {
+    .link-item a:hover {
       opacity: 1;
       transform: translateY(-2px);
       color: var(--accent);
     }
 
-    .links a:focus-visible {
+    .link-item a:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 3px;
+    }
+
+    .link-description {
+      position: absolute;
+      left: 50%;
+      top: 140%;
+      transform: translateX(-50%);
+      min-width: 180px;
+      max-width: 240px;
+      padding: 8px 10px;
+      background: rgba(0,0,0,0.85);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.75rem;
+      line-height: 1.4;
+      color: var(--muted);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      backdrop-filter: blur(8px);
+      text-align: left;
+      white-space: normal;
+      z-index: 2;
+    }
+
+    .link-description::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 0 6px 6px 6px;
+      border-style: solid;
+      border-color: transparent transparent rgba(0,0,0,0.85) transparent;
+    }
+
+    .link-item:hover .link-description {
+      opacity: 1;
+      transform: translate(-50%, -2px);
+    }
+
+    .links-caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
     }
 
     @media (max-width: 480px) {
@@ -193,21 +256,59 @@
       <img src="https://zxs.rest/gay.png" alt="Profile picture of zxs">
       <h1>zxs</h1>
       <p class="tagline">fullstack dev</p>
-      <div class="links">
-        <a href="https://luna.loan/" target="_blank" rel="noopener noreferrer" aria-label="Luna">
-          <i class="ri-moon-line"></i>
-        </a>
-        <a href="https://github.com/darkdragonzxs" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <i class="ri-github-line"></i>
-        </a>
-        <a href="https://discord.gg/1un4" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-          <i class="ri-discord-line"></i>
-        </a>
+
+      <p class="bio">
+        I build full‑stack projects, tools, and random experiments on the internet.  
+        Currently playing with modern web stacks, nodejs, and anything that looks fun.
+        (astro is not fun fyi)
+      </p>
+
+      <div class="links-wrapper">
+        <div class="links">
+          <!-- Luna -->
+          <div class="link-item">
+            <a href="https://luna.loan/"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Luna">
+              <i class="ri-moon-line"></i>
+            </a>
+            <div class="link-description">
+              Luna is a cloudmoon bypass, where you can get the cloud games from cloudmoonapp.com with no ads and infinite time!
+            </div>
+          </div>
+          <div class="link-item">
+            <a href="https://github.com/darkdragonzxs"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="GitHub">
+              <i class="ri-github-line"></i>
+            </a>
+            <div class="link-description">
+              I have random stuff and side projects, and most of the stuff i work on is closed source, so don't expect to find anything here...
+            </div>
+          </div>
+          <div class="link-item">
+            <a href="https://discord.gg/1un4"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Discord">
+              <i class="ri-discord-line"></i>
+            </a>
+            <div class="link-description">
+              My discorrd server, where you can get support for anything.
+            </div>
+          </div>
+        </div>
+
+        <div class="links-caption">
+          hover an icon to see what it is!
+        </div>
       </div>
     </div>
   </div>
 
-  <audio id="bg-music" src="bg.mp3" preload="auto"></audio>
+  <audio id="bg-music" src="https://zxs.rest/bg.mp3" preload="auto"></audio>
 
   <script>
     const phrases = [
