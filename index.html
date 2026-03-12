@@ -5,14 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@.dzxs</title>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet"
-  >
-  <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 
   <style>
     :root {
@@ -54,8 +48,7 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at top, rgba(139,92,246,0.3), transparent 55%),
-                  rgba(0,0,0,0.75);
+      background: radial-gradient(circle at top, rgba(139,92,246,0.3), transparent 55%), rgba(0,0,0,0.75);
       z-index: -1;
     }
 
@@ -75,10 +68,20 @@
       font-size: 38px;
       font-weight: 300;
       letter-spacing: 1px;
-      opacity: 1;
       text-align: center;
       padding: 0 1.5rem;
-      transition: opacity 0.4s ease;
+    }
+
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+
+    .word.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .click-text {
@@ -265,12 +268,8 @@
 
       <div class="links-wrapper">
         <div class="links">
-          <!-- Luna -->
           <div class="link-item">
-            <a href="https://luna.loan/"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Luna">
+            <a href="https://luna.loan/" target="_blank" rel="noopener noreferrer" aria-label="Luna">
               <i class="ri-moon-line"></i>
             </a>
             <div class="link-description">
@@ -278,10 +277,7 @@
             </div>
           </div>
           <div class="link-item">
-            <a href="https://github.com/darkdragonzxs"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="GitHub">
+            <a href="https://github.com/darkdragonzxs" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <i class="ri-github-line"></i>
             </a>
             <div class="link-description">
@@ -289,10 +285,7 @@
             </div>
           </div>
           <div class="link-item">
-            <a href="https://discord.gg/1un4"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Discord">
+            <a href="https://discord.gg/1un4" target="_blank" rel="noopener noreferrer" aria-label="Discord">
               <i class="ri-discord-line"></i>
             </a>
             <div class="link-description">
@@ -311,50 +304,76 @@
   <audio id="bg-music" src="https://zxs.rest/bg.mp3" preload="auto"></audio>
 
   <script>
-    const phrases = [
-      "...",
-      "is this the real life?",
-      "...",
-      "is this just fantasy?",
-      "...",
-      "caught in a landslide",
-      "no escape from reality"
+    const sequences = [
+      {
+        words: ["...", "...", "..."],
+        delays: [0, 300, 600],
+        hold: 1200
+      },
+      {
+        words: ["is", "this", "the", "real", "life?"],
+        delays: [0, 200, 400, 700, 1000],
+        hold: 1500
+      },
+      {
+        words: ["is", "this", "just", "fantasy?"],
+        delays: [0, 200, 500, 800],
+        hold: 2000
+      },
+      {
+        words: ["...", "...", "..."],
+        delays: [0, 300, 600],
+        hold: 1000
+      },
+      {
+        words: ["caught", "in", "a", "landslide"],
+        delays: [0, 200, 400, 700],
+        hold: 1500
+      },
+      {
+        words: ["no", "escape", "from", "reality"],
+        delays: [0, 250, 550, 850],
+        hold: 2500
+      }
     ];
 
-    const delays = [1.8, 2.8, 0.6, 2.6, 0.6, 3.2, 2.4];
+    let currentSeq = 0;
+
+    function splitToWords(textEl, words, delays) {
+      textEl.innerHTML = "";
+      words.forEach((word, i) => {
+        const span = document.createElement("span");
+        span.className = "word";
+        span.textContent = word + " ";
+        textEl.appendChild(span);
+      });
+      
+      const wordEls = textEl.querySelectorAll(".word");
+      wordEls.forEach((el, i) => {
+        setTimeout(() => el.classList.add("active"), delays[i]);
+      });
+    }
 
     function startSequence() {
       const overlay = document.getElementById("overlay");
-      const text = document.getElementById("text");
+      const textEl = document.getElementById("text");
       const clickText = document.querySelector(".click-text");
       const audio = document.getElementById("bg-music");
 
       clickText.style.display = "none";
-
       audio.volume = 0.55;
       audio.loop = true;
       audio.play().catch(() => {});
 
-      let i = 0;
-      const fadeDuration = 0.35;
-
-      (function next() {
-        if (i < phrases.length) {
-          text.textContent = phrases[i];
-          text.style.opacity = 0;
-
-          requestAnimationFrame(() => {
-            text.style.opacity = 1;
-          });
-
-          const totalTime = delays[i] * 1000;
-
+      function nextSequence() {
+        if (currentSeq < sequences.length) {
+          const seq = sequences[currentSeq];
+          splitToWords(textEl, seq.words, seq.delays);
+          
           setTimeout(() => {
-            text.style.opacity = 0;
-          }, totalTime - fadeDuration * 1000);
-
-          setTimeout(next, totalTime);
-          i++;
+            currentSeq++;
+            nextSequence();
+          }, seq.hold);
         } else {
           overlay.style.opacity = "0";
           setTimeout(() => {
@@ -362,7 +381,9 @@
             document.getElementById("main-content").style.display = "block";
           }, 800);
         }
-      })();
+      }
+      
+      nextSequence();
     }
 
     const bgVideo = document.getElementById("bg-video");
