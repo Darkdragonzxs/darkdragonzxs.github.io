@@ -1,444 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@.dzxs</title>
-<script>
-//                                                           _->IIl;;;-}[<;;;                                  
-//                                                        I;>_~;_]rvvvvvvvvvv\[_llI}_?;;                       
-//                                                       I<(?1nnuvvvvvvvvvvvvvvv/~-;??-~:                      
-// :>{j[;;;                                             ;_xrxfnvvvvvrurjvvvvuuj_}/1\vvvu(<;                    
-//Iuuuu\<rf~                                          ;>tf\?rvvvvvjX_uvn>1jvvxx(<?u+jvvvvn];                   
-// >juuuufv}i                                        I~)~~vvvvun)L**1uvno*Q{xvvvv}[}ivvvvvx-;                  
-//  ;~xuuu[(n|>                                     ;)!;~vuvn(ra#MWW~uu>****v)vvvv~l?ivvvvvx_;                 
-//    ;?nuuu+fi,                                   ;}>I/vxu|)oa#WWWW~ft<h*WM#r|vvvvvvx-vvvvvr_;                
-//  ;;t ;{uuuufu                                   ;/<|vjn~inWWWWWWW*!xfJ0~YM#\\vvuvvvvvvvvvvt-;               
-// xnuunu]I\uuujr;                                ;/\\tv/\+WWWWWWWWWWq]\_#WM##j!fvxvvvf+vvvvvv}_               
-//!(uuuuuuuxn~xunfr                              :/u_)uttI<(oYrWWWWWWWkl_p|rU_JfruvvvvtI]vxxvvfi;              
-//  ;>f_[xuuuuxxn~/X;                           ;fnx//nttZ>\8QxWWWWWWWWd+((88xY*{rvfvu/}?vvxnvvfI              
-//        I1/~fuucwkmn;                         )fv||tttlW#wmbWWWWWWWWWW#qZx)Ua#]jxtv\!:i1vrfuvut;             
-//             llfno##dqY!                     ~1vr(1\tucokkaWWWWWWWWWWWWMoa*#M#]/ttf1;,;[vvjnvvx\;            
-//                 ;]J###O/-                  ;-vxft~)tp;bhahWz}uuuuLq|W#k*ahaoh](tt~I;":>|vrtuvvt};           
-//                    ;nUb##uq;          ;;;;I+vujtt~)tzuhhkhWzjdbbbbblMok*akkaa)1-;,!Il;"}vvjjvvv/]I          
-//                       ;Jf0qqZnzlI ;L+l!!!!l<|xtttt>|t;C#MWoQ0bbbbbbiM#oahhhhz)]-{j,`  ;)uvjtuvvx|I          
-//                           ;|CuqqqZU?!!!!!!!!!l<1/t(!\;IYWWLjbbbbbbb<WWMM##*Yrf[1[;     ;)vxtrvvvt);         
-//                               ;;|w]l!!!!!!!!!!!!l_]|l;<:+0\/bbbbbbbjWWWM#*Oj{-]l       ;)vvftvvvut);        
-//                                   !!!!!!!!!!!!!!!!!lI;~1"";[vvvvvYqb*UUYt;_~?\-!       ;{uvftvvvvj(+;       
-//                                   ll!!l!!!!!!!!!!!!!!!I>>;I   !;;!?[+-}-<;I  {;;;      ;]xvxtjvvvnt};       
-//                                   ;llllll!!!!!!!!!!!!!i+***kr\-;xXcj)<I?LWY]i          ;+jvvftvvuvxt];      
-//                                    ;Illlllllllllll!!!!}+**Y_(?t_fcz>{x}WWWWMj<;        ;I|vvftvvujnt1<I     
-//                                      ;i>{tttttt|[<iI;;;l\X_(trr/ijlXXx[MWcrfL[l        ;;|vvftjvvvvxt?I     
-//                                     ;xvvutttttttttt!;  l_X\?tt+ft!cXXXj)QJMak[;;       ;;|vfrjtvvujxtt_;    
-//                                     ljvvttttttttttt!; ;<Xf?xxv{xXXn}iXc)l-{i^:ll       ;;|vrurtvvvnjxt?!    
-//                                    ;tvvvttttttttttt!; xzt_vvvxvXXXX*Xvj)Il!:;!!;>      ;~fvutvvjvvnjxtt~;   
-//                                    xvvvtttttttttttt|l;zff[uvx-/XXXrrjjj)Ill:",l;;      ;]xvvfvvvvvvxrrt()   
-//                                   ;\vvvttttttttttt}i>/f>xrftt_\zxjjjjjj)Illl!ll!;      ;[xvvfvnvvvvxrrtt<;  
-//                                   fnvvftttttttt{?/cXXvt!ttt|+{cqpYccjjj)Ill!!lll!;    :;[xvvuvvvvvvxtttt(}  
-//                                  ;(vvvttttttttt|<fXXXXv!tt1[nXznJLbXXvt]ll!>>i!!!!;   ;;[xvvvvvtvvvurxrtti: 
-//                                  +/vvvtxttttt1[_ilrXn?_!|>I>|cXcrjxnXXjIll?])]<l!!!;  ;-rvvvvvvfrvvvxfftt+> 
-//                                 ;|vvvvnvtttttt?)t]l-?-l;;III~1nXcXXXXXjIlIIi+__<!!!l;>;?xvvvvvvufvvvxttttt!I
-//                                 ;{vjnvvxttttttt]~!l!i!!!l!!!ll-rzXXj{t_llIi<>+}>I!!l;;>)nvvvvvvvtfvvxttttt!:
-//                                 l)}/vvvttttttttt+1/{>+lI~{>!!!_+{!<>!!IllIIi>?_<<lllI;_rvvvvvvvvtfnvxttttt_>
-//                                 (_]xvvvtttttttttt[{x)Iil!!i!!!_]>_l;!!;llIIi>-+<!IlI;i1xvvvvvvvvttjvxttttttI
-//                                l}_\vvnvtttttttttttt(IItn]]_lIl!!!l/ll)r+Illll!!lIl(:;+ruuvvvvvvvttfuxttt?|tI
-//                                :;+fvvfvtttttttttttttl I+/tn/~?xvvv1x+i/jY(>;?~I)p1f;<tftxvvvvvvvtttjxtttti|I
-//                                  vvvvfvfttttttttttttl :<Zkqr)nxntf1{xQJCfI;It_;/l  >_];?xvvvvvvntttjxtttt_I;
-//                                 Ifvvvfuvttttttttttttl :;i)))(}i;:;;iI!)]l!lI      ;;; ;?xvvvvvvttttjrttttt<;
-//                                 ;)xvvftvttttttttttt<l :I!l!!!>l; ;<<<!!!!llI;     "   ;?xvvvvvvttttttttttti;
-//                                  <\vvftuvfuttttttt|!; :I!I!!!>lI ;<<<!!!!llI;         ;?fnvvvvuttttttttttt!;
-//                                  ;[nvfttvjuttttt/<;"  :;II!!!>>> ;<<<!!!!llI;         ;?txvvvvtttttttttttt!:
-//                                   I{nutttvvxttt]lI    ;Iil!!!><i!;<<<!!!Ilil;         {I[tnvvvtttttttttttt!:
-//                                   :i(uttttfntt]I!      >>!!!!i>l;;<<!!!l;lil;          ;I}tuvxttttttttttt~! 
-//                                    I!(fxtttt{l;        I;l!!!!>l;;<!!!!l!<<!;           :I}tuuttttttttttti; 
-//                                      I]tttt(<;         I;l!!!!!!!;!!!!!!!l!!              ;i\vtttttttttt<;  
-//                                       :i<tt1;          ;;l!!!!!!I;!!!!!!!!l;                ;_ttttttttt+I   
-//                                          I+<i,          ;I!!!!!!I;!!!!!!!lI;                 ;~tttttt}>I    
-//                                             I:           ;Il!!l;;;!!!!!lI;;                   ;tttt)~lI     
-//                                                           ;<~~[<: I~[]++;                     ;t\]+;I       
-//                                                                     ;;                       ;;!;           
-//
-</script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #000;
-      --fg: #fff;
-      --muted: rgba(255,255,255,0.65);
-      --border: rgba(255,255,255,0.15);
-      --card-bg: rgba(0,0,0,0.6);
-      --accent: #8b5cf6;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@.dzxs</title>
 
-    * {
-      box-sizing: border-box;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 
-    body {
-      margin: 0;
-      height: 100vh;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
+<style>
+:root {
+  --bg:#000;
+  --fg:#fff;
+  --muted:rgba(255,255,255,0.65);
+  --border:rgba(255,255,255,0.15);
+  --card-bg:rgba(0,0,0,0.6);
+  --accent:#ffffff;
+}
 
-    #bg-video {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(1) brightness(0.45);
-      z-index: -2;
-    }
+*{box-sizing:border-box}
 
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(139,92,246,0.3), transparent 55%), rgba(0,0,0,0.75);
-      z-index: -1;
-    }
+body{
+  margin:0;
+  height:100vh;
+  font-family:Inter,system-ui;
+  background:var(--bg);
+  color:var(--fg);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
 
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 0.8s ease;
-      z-index: 10;
-    }
+#bg-video{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:grayscale(1) brightness(0.45);
+  z-index:-2;
+}
 
-    #text {
-      font-size: 38px;
-      font-weight: 300;
-      letter-spacing: 1px;
-      text-align: center;
-      padding: 0 1.5rem;
-    }
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at top,rgba(139,92,246,0.3),transparent 55%),rgba(0,0,0,0.75);
+  z-index:-1;
+}
 
-    .word {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.3s ease;
-      margin: 0 8px;
-    }
+.overlay{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+  transition:opacity .8s;
+}
 
-    .word.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.click-text{
+  font-size:14px;
+  letter-spacing:5px;
+  opacity:.7;
+  cursor:pointer;
+}
 
-    .click-text {
-      margin-top: 24px;
-      font-size: 13px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      opacity: 0.6;
-      cursor: pointer;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      user-select: none;
-    }
+#main-content{
+  display:none;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
-    .click-text:hover {
-      opacity: 1;
-      transform: translateY(-1px);
-    }
+.dashboard{
+  display:flex;
+  gap:24px;
+  align-items:center;
+}
 
-    #main-content {
-      display: none;
-      z-index: 1;
-      padding: 16px;
-      width: 100%;
-      max-width: 480px;
-    }
+.panel{
+  width:260px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:var(--card-bg);
+  backdrop-filter:blur(14px);
+  padding:14px;
+}
 
-    .card {
-      width: 100%;
-      padding: 32px 26px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      text-align: center;
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.6);
-    }
+.panel-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+  font-size:.9rem;
+}
 
-    .card img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      filter: grayscale(1);
-      margin-bottom: 18px;
-      border: 1px solid rgba(255,255,255,0.25);
-    }
+.panel-title i{color:var(--accent)}
 
-    .card h1 {
-      margin: 0;
-      font-weight: 500;
-      font-size: 1.6rem;
-      letter-spacing: 0.04em;
-    }
+.row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 4px;
+  text-decoration:none;
+  color:inherit;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
 
-    .tagline {
-      margin-top: 6px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+.row:last-child{border:none}
 
-    .bio {
-      margin-top: 14px;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: var(--muted);
-    }
+.row:hover{
+  background:rgba(255,255,255,0.05);
+}
 
-    .links-wrapper {
-      margin-top: 26px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-    }
+.row img{
+  width:22px;
+  height:22px;
+  border-radius:5px;
+}
 
-    .links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-    }
+.small{
+  font-size:.75rem;
+  color:var(--muted);
+}
 
-    .link-item {
-      position: relative;
-    }
+.card{
+  width:280px;
+  padding:26px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--card-bg);
+  backdrop-filter:blur(16px);
+  text-align:center;
+}
 
-    .link-item a {
-      color: var(--fg);
-      font-size: 22px;
-      opacity: 0.7;
-      transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
-    }
+.card img{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+}
 
-    .link-item a:hover {
-      opacity: 1;
-      transform: translateY(-2px);
-      color: var(--accent);
-    }
+.tagline{color:var(--muted)}
+.bio{font-size:.85rem;color:var(--muted)}
 
-    .link-item a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
+.links{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-top:12px;
+}
 
-    .link-description {
-      position: absolute;
-      left: 50%;
-      top: 140%;
-      transform: translateX(-50%);
-      min-width: 180px;
-      max-width: 240px;
-      padding: 8px 10px;
-      background: rgba(0,0,0,0.85);
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.12);
-      font-size: 0.75rem;
-      line-height: 1.4;
-      color: var(--muted);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.18s ease, transform 0.18s ease;
-      backdrop-filter: blur(8px);
-      text-align: left;
-      white-space: normal;
-      z-index: 2;
-    }
+.links a{
+  color:var(--fg);
+  font-size:18px;
+  opacity:.7;
+}
+.links a:hover{opacity:1;color:var(--accent)}
 
-    .link-description::before {
-      content: "";
-      position: absolute;
-      top: -6px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-width: 0 6px 6px 6px;
-      border-style: solid;
-      border-color: transparent transparent rgba(0,0,0,0.85) transparent;
-    }
-
-    .link-item:hover .link-description {
-      opacity: 1;
-      transform: translate(-50%, -2px);
-    }
-
-    .links-caption {
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    @media (max-width: 480px) {
-      #text {
-        font-size: 28px;
-      }
-      .card {
-        padding: 26px 20px;
-      }
-      .card img {
-        width: 96px;
-        height: 96px;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <video id="bg-video" autoplay muted loop playsinline>
-    <source src="https://zxs.rest/bg.mp4" type="video/mp4">
-  </video>
 
-  <div class="overlay" id="overlay">
-    <div id="text"></div>
-    <div class="click-text" onclick="startSequence()">enter</div>
-  </div>
+<video id="bg-video" autoplay muted loop>
+<source src="/bg.mp4">
+</video>
 
-  <div id="main-content">
-    <div class="card">
-      <img src="https://zxs.rest/gay.png" alt="Profile picture of zxs">
-      <h1>zxs</h1>
-      <p class="tagline">@.dzxs</p>
+<div class="overlay" id="overlay">
+  <div class="click-text" onclick="startSequence()">enter</div>
+</div>
 
-      <p class="bio">
-        I build full‑stack projects, tools, and random shit on the internet.  
-        Currently learning c# and typescript, and i'm fluent in html, js, css, python, and nodejs.
-        I like to listen to artists like pinkpanthress, chemonio, and SUPXR...
-        I also like drawing, and sometimes animation.
-      </p>
+<div id="main-content">
 
-      <div class="links-wrapper">
-        <div class="links">
-          <div class="link-item">
-            <a href="https://luna.loan/" target="_blank" rel="noopener noreferrer" aria-label="Luna">
-              <i class="ri-moon-line"></i>
-            </a>
-            <div class="link-description">
-              Luna is a cloudmoon bypass, where you can get the cloud games from cloudmoonapp.com with no ads and infinite time!
-            </div>
-          </div>
-          <div class="link-item">
-            <a href="https://github.com/darkdragonzxs" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <i class="ri-github-line"></i>
-            </a>
-            <div class="link-description">
-              I have random stuff and side projects, and most of the stuff i work on is closed source, so don't expect to find anything here...
-            </div>
-          </div>
-          <div class="link-item">
-            <a href="https://discord.gg/cloudmoon" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-              <i class="ri-discord-line"></i>
-            </a>
-            <div class="link-description">
-              My discord server, where you can get support for anything.
-            </div>
-          </div>
-        </div>
+<div class="dashboard">
 
-        <div class="links-caption">
-          hover an icon to see what it is!
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="panel">
+<div class="panel-title"><i class="ri-plug-line"></i> webports</div>
 
-  <audio id="bg-music" src="https://zxs.rest/bg.mp3" preload="auto"></audio>
+<div class="row">
+<img src="https://cdn2.steamgriddb.com/icon/98f0d5f93731b7f3186531c37cca0945/32/256x256.png">
+<div>
+<div>katawa shoujo</div>
+<div class="small">ren'py</div>
+</div>
+</div>
 
-  <script>
-    const sequences = [
-      {
-        words: [".", ".", "."],
-        delays: [0, 500, 1000],
-        hold: 1500
-      },
-      {
-        words: ["i'm", "freezing", "outside"],
-        delays: [150, 500, 1000],
-        hold: 2000
-      },
-      {
-        words: ["I", "feel", "my", "skin", "tight"],
-        delays: [0, 150, 400, 600, 900],
-        hold: 2000
-      },
-      {
-        words: ["My", "coat", "is", "inside"],
-        delays: [0, 300, 600, 900],
-        hold: 2100
-      },
-      {
-        words: ["but", "i", "look", "up", "at", "you"],
-        delays: [0, 200, 400, 700, 1000, 1200],
-        hold: 2200
-      }
-    ];
+<div class="row">
+<img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2133930/header.jpg?t=1702670766">
+<div>
+<div>stillwater</div>
+<div class="small">ren'py</div>
+</div>
+</div>
 
-    let currentSeq = 0;
+</div>
 
-    function splitToWords(textEl, words, delays) {
-      textEl.innerHTML = "";
-      words.forEach((word, i) => {
-        const span = document.createElement("span");
-        span.className = "word";
-        span.textContent = word;
-        textEl.appendChild(span);
-      });
-      
-      const wordEls = textEl.querySelectorAll(".word");
-      wordEls.forEach((el, i) => {
-        setTimeout(() => el.classList.add("active"), delays[i]);
-      });
-    }
+<div class="card">
+<img src="/gay.png">
+<h1>zxs</h1>
+<p class="tagline">@.dzxs</p>
 
-    function startSequence() {
-      const overlay = document.getElementById("overlay");
-      const textEl = document.getElementById("text");
-      const clickText = document.querySelector(".click-text");
-      const audio = document.getElementById("bg-music");
+<p class="bio">
+full stack dev, random internet tools and other stuff
+</p>
 
-      clickText.style.display = "none";
-      audio.volume = 0.55;
-      audio.loop = true;
-      audio.play().catch(() => {});
+<div class="links">
+<a href="https://github.com/DarkDragonZXS" target="_blank"><i class="ri-github-line"></i></a>
+<a href="https://discord.com/users/1079096114273320971" target="_blank"><i class="ri-discord-line"></i></a>
+<a href="https://luna.loan" target="_blank"><i class="ri-moon-line"></i></a>
+</div>
+</div>
 
-      function nextSequence() {
-        if (currentSeq < sequences.length) {
-          const seq = sequences[currentSeq];
-          splitToWords(textEl, seq.words, seq.delays);
-          
-          setTimeout(() => {
-            currentSeq++;
-            nextSequence();
-          }, seq.hold);
-        } else {
-          overlay.style.opacity = "0";
-          setTimeout(() => {
-            overlay.remove();
-            document.getElementById("main-content").style.display = "block";
-          }, 800);
-        }
-      }
-      
-      nextSequence();
-    }
+<div class="panel">
+<div class="panel-title"><i class="ri-team-line"></i> Organizations</div>
 
-    const bgVideo = document.getElementById("bg-video");
-    bgVideo.muted = true;
-    bgVideo.volume = 0;
-  </script>
+<a class="row" href="https://wiltedservices.org" target="_blank">
+<img src="https://wiltedservices.org/assets/WILTED%20SERVICES%20(1).png">
+<div>
+<div>wilted services</div>
+<div class="small">modernizing unblocking</div>
+</div>
+</a>
+
+<a class="row" href="https://wasm.rip" target="_blank">
+<img src="https://avatars.githubusercontent.com/u/262451264?s=200&v=4">
+<div>
+<div>wasm.rip</div>
+<div class="small">webporting organization</div>
+</div>
+</a>
+
+</div>
+
+</div>
+</div>
+
+<audio id="bg-music" src="/bg.mp3" preload="auto"></audio>
+
+<script>
+function startSequence(){
+  const overlay = document.getElementById("overlay");
+  const audio = document.getElementById("bg-music");
+
+  audio.volume = 0.55;
+  audio.loop = true;
+  audio.play().catch(()=>{});
+
+  overlay.style.opacity="0";
+
+  setTimeout(()=>{
+    overlay.remove();
+    document.getElementById("main-content").style.display="flex";
+  },800);
+}
+</script>
+
 </body>
 </html>
